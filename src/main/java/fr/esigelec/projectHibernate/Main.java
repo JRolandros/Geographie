@@ -35,16 +35,16 @@ public class Main {
 		Pays p=new Pays(1,474000,"France");
 		
 		
-		System.out.println(p.toString());
+		//System.out.println(p.toString());
 		
 		//Test d'ajout
-		pDao.ajouter(p);
+		//pDao.ajouter(p);
 		
 		//p=pDao.getPays(4);
-		Ville v=new Ville(0,p,1452,"Paris");
+		Ville v;//=new Ville(0,p,1452,"Paris");
 		//vDao.ajouter(v);
-		//v=vDao.getVille(9);
-		System.out.println("Avant: "+ p.toString());
+		v=vDao.getVille(9);
+		System.out.println("Avant: "+ v.toString());
 		//v.setNom("Kribi");
 		//v.setNb_habitant(100000);
 		//vDao.update(v);

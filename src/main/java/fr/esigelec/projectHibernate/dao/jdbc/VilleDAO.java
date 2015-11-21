@@ -67,8 +67,6 @@ public class VilleDAO implements IVilleDAO {
 			preparedStatement.setInt(1, id);
 
 			// execute insert SQL stetement
-			preparedStatement.executeUpdate();
-			
 			ResultSet rs = preparedStatement.executeQuery();
 			rs.next();
 			v=new Ville();
@@ -106,9 +104,7 @@ public class VilleDAO implements IVilleDAO {
 		try {
 			preparedStatement = ConnectionManager.getConnection().prepareStatement(selectSQL);
 
-			// execute insert SQL stetement
-			preparedStatement.executeUpdate();
-			
+			// execute insert SQL stetement	
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()){
 			v=new Ville();

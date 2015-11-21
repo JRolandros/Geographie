@@ -63,9 +63,7 @@ public class PaysDAO implements IPAysDAO {
 			preparedStatement = ConnectionManager.getConnection().prepareStatement(selectSQL);
 			preparedStatement.setInt(1, id);
 
-			// execute insert SQL stetement
-			preparedStatement.executeUpdate();
-			
+			// execute insert SQL stetement			
 			ResultSet rs = preparedStatement.executeQuery();
 			rs.next();
 			p=new Pays();
@@ -99,8 +97,6 @@ public class PaysDAO implements IPAysDAO {
 			preparedStatement = ConnectionManager.getConnection().prepareStatement(selectSQL);
 
 			// execute insert SQL stetement
-			preparedStatement.executeUpdate();
-			
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()){
 			p=new Pays();
@@ -135,9 +131,7 @@ public class PaysDAO implements IPAysDAO {
 			preparedStatement = ConnectionManager.getConnection().prepareStatement(selectSQL);
 			preparedStatement.setString(1, nomPays);
 
-			// execute insert SQL stetement
-			preparedStatement.executeUpdate();
-			
+			// execute insert SQL stetement		
 			ResultSet rs = preparedStatement.executeQuery();
 			rs.next();
 			p=new Pays();
