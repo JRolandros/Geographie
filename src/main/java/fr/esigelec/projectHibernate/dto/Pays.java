@@ -10,7 +10,12 @@ public class Pays {
 		private double superficie;
 		private String nom;
 		
-		//Constructeur
+		//Constructeurs
+		
+		public Pays(){
+			
+		}
+		
 		/**
 		 * @param id
 		 * @param superficie
@@ -22,6 +27,12 @@ public class Pays {
 			this.nom = nom;
 		}
 		
+	
+		@Override
+		public String toString() {
+			return "Pays [id=" + id + ", superficie=" + superficie + ", nom=" + nom + "]";
+		}
+
 		//Getters
 		/**
 		 * @return the id
@@ -29,12 +40,14 @@ public class Pays {
 		public int getId() {
 			return id;
 		}
+		
 		/**
 		 * @return the superficie
 		 */
 		public double getSuperficie() {
 			return superficie;
 		}
+		
 		/**
 		 * @return the nom
 		 */
@@ -49,12 +62,14 @@ public class Pays {
 		public void setId(int id) {
 			this.id = id;
 		}
+		
 		/**
 		 * @param superficie the superficie to set
 		 */
 		public void setSuperficie(double superficie) {
 			this.superficie = superficie;
 		}
+		
 		/**
 		 * @param nom the nom to set
 		 */

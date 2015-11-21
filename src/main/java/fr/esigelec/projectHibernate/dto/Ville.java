@@ -8,11 +8,17 @@ package fr.esigelec.projectHibernate.dto;
  *
  */
 public class Ville {
+	
 		private int id;
-		private int id_pays;
+		private Pays pays;
 		private int nb_habitant;
 		private String nom;
 		
+		//Constructeurs
+		
+		public Ville(){
+			
+		}
 		
 		/**
 		 * @param id
@@ -20,13 +26,19 @@ public class Ville {
 		 * @param nb_habitant
 		 * @param nom
 		 */
-		public Ville(int id, int id_pays, int nb_habitant, String nom) {
+		public Ville(int id, Pays pays, int nb_habitant, String nom) {
 			this.id = id;
-			this.id_pays = id_pays;
+			this.pays = pays;
 			this.nb_habitant = nb_habitant;
 			this.nom = nom;
 		}
 		
+		@Override
+		public String toString() {
+			return "Ville [id=" + id + ", pays=" + pays + ", nb_habitant=" + nb_habitant + ", nom=" + nom + "]";
+		}
+
+
 		//Getters
 		/**
 		 * @return the id
@@ -37,8 +49,8 @@ public class Ville {
 		/**
 		 * @return the id_pays
 		 */
-		public int getId_pays() {
-			return id_pays;
+		public Pays getPays() {
+			return pays;
 		}
 		/**
 		 * @return the nb_habitant
@@ -63,8 +75,8 @@ public class Ville {
 		/**
 		 * @param id_pays the id_pays to set
 		 */
-		public void setId_pays(int id_pays) {
-			this.id_pays = id_pays;
+		public void setPays(Pays pays) {
+			this.pays = pays;
 		}
 		/**
 		 * @param nb_habitant the nb_habitant to set
@@ -72,6 +84,7 @@ public class Ville {
 		public void setNb_habitant(int nb_habitant) {
 			this.nb_habitant = nb_habitant;
 		}
+		
 		/**
 		 * @param nom the nom to set
 		 */
