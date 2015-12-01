@@ -7,8 +7,13 @@ import fr.esigelec.projectHibernate.dao.hibernate.PaysDAOImpl;
 import fr.esigelec.projectHibernate.dao.hibernate.VilleDAOImpl;
 import fr.esigelec.projectHibernate.dao.jdbc.PaysDAO;
 import fr.esigelec.projectHibernate.dao.jdbc.VilleDAO;
+
+import java.util.List;
+
 import fr.esigelec.projectHibernate.dao.IPAysDAO;
 import fr.esigelec.projectHibernate.dao.IVilleDAO;
+import fr.esigelec.projectHibernate.dao.PaysDAOFactory;
+import fr.esigelec.projectHibernate.dao.VilleDAOFactory;
 import fr.esigelec.projectHibernate.dto.Pays;
 import fr.esigelec.projectHibernate.dto.Ville;
 
@@ -23,28 +28,35 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//Instances d'objets DAO
-		IVilleDAO vDao;
-		IPAysDAO pDao;
+		IVilleDAO villeDao;
+		IVilleDAO villeDaoJDBC;
+		IPAysDAO paysDao;
+		IPAysDAO paysDaoJDBC;
 		
-		//vDao=new VilleDAOImpl();
-		//pDao=new PaysDAOImpl();
-		
-		vDao=new VilleDAO();
-		pDao=new PaysDAO();
+		villeDao=VilleDAOFactory.getVilleDAO("villeDAOImpl");
+		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOImpl");
+		villeDaoJDBC=VilleDAOFactory.getVilleDAO("VilleDAO");
+		paysDaoJDBC=PaysDAOFactory.getPaysDAO("PaysDAO");
 		//Instances d'objet beans
 		Pays p=new Pays(1,474000,"France");
 		
 		
-		//System.out.println(p.toString());
+		//System.out.println("\n\nHibernate implementation\n\n"+villeDao.getVille(9).toString()+"\n\n");
+		//System.out.println("\nJDBC Implementation\n"+villeDaoJDBC.getVille(9).toString()+"\n\n");
 		
+		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOImpl");
+		Pays pp=new Pays(0,148569,"USA");
+		paysDao.ajouter(pp);
+		List<Pays> l=paysDao.getPays();
+		//System.out.println(pp.toString());
+		System.out.println(l);
 		//Test d'ajout
 		//pDao.ajouter(p);
 		
 		//p=pDao.getPays(4);
-		Ville v;//=new Ville(0,p,1452,"Paris");
+		//Ville v;//=new Ville(0,p,1452,"Paris");
 		//vDao.ajouter(v);
-		v=vDao.getVille(9);
-		System.out.println("Avant: "+ v.toString());
+		//System.out.println("Avant: "+ v.toString());
 		//v.setNom("Kribi");
 		//v.setNb_habitant(100000);
 		//vDao.update(v);

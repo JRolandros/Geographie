@@ -79,8 +79,7 @@ public class VilleDAOImpl implements IVilleDAO {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			session.update(v);
-			
+			session.update(v);			
 			session.getTransaction().commit();
 			session.close();
 			

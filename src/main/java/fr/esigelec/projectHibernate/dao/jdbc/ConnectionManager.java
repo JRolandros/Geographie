@@ -25,7 +25,7 @@ public class ConnectionManager {
 		else
 		{
 			try {
-				System.out.println("Connecting MySQL ...");
+				System.out.println("Connecting to MySQL ...");
 					Class.forName("com.mysql.jdbc.Driver").newInstance();
 			} catch (Exception e) {
 				System.out.println("Connection failed. ");

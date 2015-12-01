@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="fr.esigelec.projectHibernate.dto">
-<class name="Pays" table="pays">
+<class name="Pays" table="pays" >
 <id name="id" column="id">
 <generator class="native"/>
 </id>
@@ -10,5 +10,20 @@
 <property name="nom" type="string"/>
 <!-- les types peuvent etre trouvés automatiquement par hibernate avec la reflexion, il peut etre utile
 de les mettre pour le type Date par exemple, car il existe plusieurs classes date -->
+
+<set name="listVille"  inverse="true"> 
+<key column="id_pays"/>
+<one-to-many class="Ville"/>
+</set>
+
+<!-- inverse : la collection ne mettra pas à jour le lien (c'est l'entité personne qui va gérer le lien) 
+         
+         illustration
+  *Ville*                     *Pays *
+  *     *====================>*     *
+  *     *many              one*     *
+  ** * **                     *******
+-->
+
 </class>
 </hibernate-mapping>

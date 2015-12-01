@@ -47,6 +47,7 @@ public class VilleDAO implements IVilleDAO {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				//finally close the connction
 				ConnectionManager.close();
 			}
 		}
@@ -84,6 +85,7 @@ public class VilleDAO implements IVilleDAO {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				//finally close the connection
 				ConnectionManager.close();
 			}
 		}

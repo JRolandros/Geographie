@@ -13,5 +13,14 @@
 <!-- les types peuvent etre trouvés automatiquement par hibernate avec la reflexion, il peut etre utile
 de les mettre pour le type Date par exemple, car il existe plusieurs classes date -->
 </class>
-
+<!-- inverse : la collection ne mettra pas à jour le lien (c'est l'entité personne qui va gérer le lien) 
+         
+         illustration
+  *Ville*                     *Pays *
+  *     *====================>*     *
+  *     *many              one*     *
+  ** * **                     *******
+  
+  un pays a plusieurs villes et une ville a un pays
+-->
 </hibernate-mapping>

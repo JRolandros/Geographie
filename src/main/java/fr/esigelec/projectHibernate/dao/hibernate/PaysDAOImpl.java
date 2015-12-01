@@ -3,10 +3,12 @@
  */
 package fr.esigelec.projectHibernate.dao.hibernate;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
 
 import fr.esigelec.projectHibernate.dao.IPAysDAO;
 import fr.esigelec.projectHibernate.dao.IVilleDAO;
@@ -32,9 +34,9 @@ public class PaysDAOImpl implements IPAysDAO {
 			//session.close();
 		
 		} catch (Exception e) {
-		// TODO: handle exception
+		e.printStackTrace();
 		} finally {
-        session.flush();
+        //session.flush();
         session.close();
     }
 
@@ -48,12 +50,12 @@ public class PaysDAOImpl implements IPAysDAO {
 		try {
 				Session session = HibernateUtil.getSessionFactory().openSession();
 				session.beginTransaction();
-				reponse=(Pays)session.get(Pays.class,id);
+				reponse=session.get(Pays.class,id);
 				session.getTransaction().commit();
 				session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return reponse;
 	}
@@ -67,12 +69,19 @@ public class PaysDAOImpl implements IPAysDAO {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			Query q=session.createQuery("from Pays"); //requete HQL
-			reponse=q.list();
+			//q.setResultTransformer( Transformers.aliasToBean(Pays.class));
+			reponse= (List<Pays>)q.list();
+			/*
+			for (Pays pays : reponse) {
+				session.persist(pays);
+				List<Ville> list=(List<Ville>)session.createQuery("from ville ").list();
+				pays.setListVille(list);
+			}*/
 			session.getTransaction().commit();
 			session.close();
 			 
 		} catch (Exception e) {
-			//TODO 
+			e.printStackTrace();
 		}
 		return reponse;
 	}
@@ -87,13 +96,13 @@ public class PaysDAOImpl implements IPAysDAO {
 			session.beginTransaction();
 			String hql = "from Pays where nom=:nomPays";
 			Query query = session.createQuery(hql);
-			query.setString("nomPays",nomPays).getFirstResult();
-			retour= (Pays)query;
+			query.setString("nomPays",nomPays).setMaxResults(1);
+			retour= (Pays)query;//.uniqueResult();
 			session.getTransaction().commit();
 			session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return retour;
 
@@ -111,7 +120,7 @@ public class PaysDAOImpl implements IPAysDAO {
 			session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
@@ -128,7 +137,7 @@ public class PaysDAOImpl implements IPAysDAO {
 				session.close();
 		
 	} catch (Exception e) {
-		// TODO: handle exception
+		e.printStackTrace();
 	}
 
 	}
