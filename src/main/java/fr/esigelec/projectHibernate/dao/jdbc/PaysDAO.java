@@ -6,8 +6,10 @@ package fr.esigelec.projectHibernate.dao.jdbc;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import fr.esigelec.projectHibernate.dao.IPAysDAO;
 import fr.esigelec.projectHibernate.dto.Pays;

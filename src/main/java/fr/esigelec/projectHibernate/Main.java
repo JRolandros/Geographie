@@ -44,12 +44,12 @@ public class Main {
 		//System.out.println("\n\nHibernate implementation\n\n"+villeDao.getVille(9).toString()+"\n\n");
 		//System.out.println("\nJDBC Implementation\n"+villeDaoJDBC.getVille(9).toString()+"\n\n");
 		
-		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOImpl");
-		Pays pp=new Pays(0,148569,"USA");
-		paysDao.ajouter(pp);
-		List<Pays> l=paysDao.getPays();
+		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOJDBC");
+		Pays pp=new Pays(0,14859,"URKRAINE");
+		//paysDao.ajouter(pp);
+		//List<Pays> l=paysDao.getPays();
 		//System.out.println(pp.toString());
-		System.out.println(l);
+		//System.out.println(l);
 		//Test d'ajout
 		//pDao.ajouter(p);
 		

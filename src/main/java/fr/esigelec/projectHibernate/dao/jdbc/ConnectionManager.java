@@ -20,10 +20,6 @@ public class ConnectionManager {
 	private static Connection connection=null;
 	
 	public static Connection getConnection() throws SQLException{
-		if(connection!=null && connection.isClosed())
-			return connection;
-		else
-		{
 			try {
 				System.out.println("Connecting to MySQL ...");
 					Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -35,18 +31,18 @@ public class ConnectionManager {
 			System.out.println("Connecting to database...");
 
 			try {
-					connection =  DriverManager.getConnection(url, username, password);
+					connection = DriverManager.getConnection(url, username, password);
 			    System.out.println("Database connected!");
 			} catch (SQLException e) {
 			    throw new IllegalStateException("Cannot connect the database!", e);
 			}
 			return connection;
-		}
 	}
 	
 	public static void close(){
 		try {
 			connection.close();
+			System.out.println("\n Connection closed!\n");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

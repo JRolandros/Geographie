@@ -16,7 +16,7 @@ public class PaysDAOFactory {
 		switch(DAOImplementation.toUpperCase()){
 		case "PAYSDAOIMPL":
 			return new PaysDAOImpl();
-		case "PAYSDAO":
+		case "PAYSDAOJDBC":
 			return new PaysDAO();
 		default:
 				return null;
