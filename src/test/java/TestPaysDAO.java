@@ -15,7 +15,7 @@ public class TestPaysDAO {
 	IPAysDAO paysDao;
 	IVilleDAO villeDao;
 
-	@Test
+	@Ignore
 	public void testAjouter() {
 		
 		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOImpl");
@@ -44,14 +44,23 @@ public class TestPaysDAO {
 		assertTrue(l.contains(p));
 	}
 
-	@Ignore
+	@Test
 	public void testGetPaysString() {
-		
+		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOJDBC");
+		Pays p=new Pays(17,148569,"USA");
+		//paysDao.ajouter(p);
+		Pays newP=paysDao.getPays("USA");
+		assertEquals(newP, p);
 	}
 
 	@Ignore
 	public void testUpdate() {
-		
+		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOJDBC");
+		Pays p=paysDao.getPays("UKRAINE");
+		String nameP=p.getNom();
+		p.setNom("Canada");
+		paysDao.update(p);
+		assertFalse(nameP.equals(p.getNom()));
 	}
 
 	@Ignore
