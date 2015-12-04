@@ -35,7 +35,7 @@ public class Ville {
 		
 		@Override
 		public String toString() {
-			return "Ville [id=" + id + ", pays=" + pays + ", nb_habitant=" + nb_habitant + ", nom=" + nom + "]";
+			return "Ville [id=" + id + ", pays=" + pays + ", nb_habitant=" + nb_habitant + ", nom=" + nom + "]\n";
 		}
 
 

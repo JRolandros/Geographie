@@ -19,5 +19,6 @@ public interface IVilleDAO {
 	public void update(Ville v);
 	public void delete(Ville v);
 	public void refresh(Ville v);
+	public void closeHibernateSession();
 
 }

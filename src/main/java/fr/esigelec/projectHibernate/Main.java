@@ -27,46 +27,18 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Instances d'objets DAO
-		IVilleDAO villeDao;
-		IVilleDAO villeDaoJDBC;
-		IPAysDAO paysDao;
-		IPAysDAO paysDaoJDBC;
 		
-		villeDao=VilleDAOFactory.getVilleDAO("villeDAOImpl");
-		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOImpl");
-		villeDaoJDBC=VilleDAOFactory.getVilleDAO("VilleDAO");
-		paysDaoJDBC=PaysDAOFactory.getPaysDAO("PaysDAO");
-		//Instances d'objet beans
-		Pays p=new Pays(1,474000,"France");
+		IPAysDAO pDAO;
+		IVilleDAO vDAO;
+		Pays p=new Pays(24,148569,"USA");
+		Ville v=new Ville(0, p, 152360, "Aklga");
 		
+		vDAO=VilleDAOFactory.getVilleDAO("VILLEDAOHibernate");
 		
-		//System.out.println("\n\nHibernate implementation\n\n"+villeDao.getVille(9).toString()+"\n\n");
-		//System.out.println("\nJDBC Implementation\n"+villeDaoJDBC.getVille(9).toString()+"\n\n");
-		
-		paysDao=PaysDAOFactory.getPaysDAO("PaysDAOJDBC");
-		Pays pp=new Pays(0,14859,"URKRAINE");
-		//paysDao.ajouter(pp);
-		//List<Pays> l=paysDao.getPays();
-		//System.out.println(pp.toString());
-		//System.out.println(l);
-		//Test d'ajout
-		//pDao.ajouter(p);
-		
-		//p=pDao.getPays(4);
-		//Ville v;//=new Ville(0,p,1452,"Paris");
-		//vDao.ajouter(v);
-		//System.out.println("Avant: "+ v.toString());
-		//v.setNom("Kribi");
-		//v.setNb_habitant(100000);
-		//vDao.update(v);
-		//System.out.println( v.toString());
-		
-		//pDao.delete(p);
-		
-		
-		//vDao.delete(v);
-		
+		//vDAO.ajouter(v);
+		//List<Ville> listVille=vDAO.getVilles();
+		//System.out.println(listVille);
+		vDAO.closeHibernateSession();
 
 	}
 

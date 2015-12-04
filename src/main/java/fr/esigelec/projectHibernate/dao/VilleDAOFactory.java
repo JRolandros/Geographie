@@ -14,9 +14,9 @@ public class VilleDAOFactory {
 	
 	public static IVilleDAO getVilleDAO(String DAOImplementation){
 		switch(DAOImplementation.toUpperCase()){
-		case "VILLEDAOIMPL":
+		case "VILLEDAOHIBERNATE":
 			return new VilleDAOImpl();
-		case "VILLEDAO":
+		case "VILLEDAOJDBC":
 			return new VilleDAO();
 		default:
 				return null;

@@ -203,5 +203,9 @@ public class VilleDAO implements IVilleDAO {
 		// TODO Auto-generated method stub
 
 	}
+	// this methode is note worth here, just for hibernate implementation
+	public void closeHibernateSession(){
+		
+	}
 
 }

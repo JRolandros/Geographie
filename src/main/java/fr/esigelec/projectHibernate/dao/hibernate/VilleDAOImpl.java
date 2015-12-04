@@ -17,19 +17,20 @@ import fr.esigelec.projectHibernate.dto.Ville;
  */
 public class VilleDAOImpl implements IVilleDAO {
 
+	Session session=null;
 	/* (non-Javadoc)
 	 * @see fr.esigelec.projectHibernate.dao.jdbc.IVilleDAO#ajouter(fr.esigelec.projectHibernate.dto.Ville)
 	 */
 	public void ajouter(Ville v) {
 		try {
-				Session session = HibernateUtil.getSessionFactory().openSession();
+				session = HibernateUtil.getSessionFactory().openSession();
 				session.beginTransaction();
 				session.save(v);
 				session.getTransaction().commit();
 				session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
@@ -40,7 +41,7 @@ public class VilleDAOImpl implements IVilleDAO {
 	public Ville getVille(int id) {
 		Ville reponse=null;
 		try {
-				Session session = HibernateUtil.getSessionFactory().openSession();
+				session = HibernateUtil.getSessionFactory().openSession();
 				session.beginTransaction();
 				reponse=(Ville)session.get(Ville.class,id);
 				session.getTransaction().commit();
@@ -48,7 +49,7 @@ public class VilleDAOImpl implements IVilleDAO {
 				//session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return reponse;
 	}
@@ -59,15 +60,15 @@ public class VilleDAOImpl implements IVilleDAO {
 	public List<Ville> getVilles() {
 		List<Ville> reponse=null;
 		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			Query q=session.createQuery("from Ville"); //requete HQL
 			reponse=q.list();
 			session.getTransaction().commit();
-			session.close();
+			//session.close();
 			 
 		} catch (Exception e) {
-			//TODO
+			e.printStackTrace();
 		}
 		return reponse;
 	}
@@ -77,14 +78,14 @@ public class VilleDAOImpl implements IVilleDAO {
 	 */
 	public void update(Ville v) {
 		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			session.update(v);			
 			session.getTransaction().commit();
 			session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
@@ -94,14 +95,14 @@ public class VilleDAOImpl implements IVilleDAO {
 	 */
 	public void delete(Ville v) {
 		try {
-				Session session = HibernateUtil.getSessionFactory().openSession();
+				session = HibernateUtil.getSessionFactory().openSession();
 				session.beginTransaction();
 				session.delete(v);
 				session.getTransaction().commit();
 				session.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
@@ -110,13 +111,17 @@ public class VilleDAOImpl implements IVilleDAO {
 	 * @see fr.esigelec.projectHibernate.dao.jdbc.IVilleDAO#refresh(fr.esigelec.projectHibernate.dto.Ville)
 	 */
 	public void refresh(Ville v) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.update(v);
 		session.refresh(v);
 		session.getTransaction().commit();
 		session.close();
 		//v=getVille(v.getId());
+	}
+	
+	public void closeHibernateSession(){
+		session.close();
 	}
 
 }
